@@ -1,26 +1,80 @@
 @import "tailwindcss";
-
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
+@import "@digital-go-jp/design-tokens/dist/tokens.css";
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
+  /* Primary (DADS Blue) */
+  --color-primary: var(--color-primitive-blue-900);
+  --color-primary-hover: var(--color-primitive-blue-800);
+  --color-primary-light: var(--color-primitive-blue-100);
+  --color-primary-bg: var(--color-primitive-blue-50);
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  /* Text */
+  --color-text-body: var(--color-neutral-solid-gray-900);
+  --color-text-secondary: var(--color-neutral-solid-gray-600);
+  --color-text-placeholder: var(--color-neutral-solid-gray-420);
+  --color-text-disabled: var(--color-neutral-solid-gray-400);
+  --color-text-on-primary: var(--color-neutral-white);
+  --color-text-link: var(--color-primitive-blue-900);
+
+  /* Surface */
+  --color-surface: var(--color-neutral-white);
+  --color-surface-secondary: var(--color-neutral-solid-gray-50);
+  --color-surface-hover: var(--color-neutral-solid-gray-100);
+
+  /* Border */
+  --color-border: var(--color-neutral-solid-gray-200);
+  --color-border-strong: var(--color-neutral-solid-gray-400);
+  --color-border-focus: #0877d7;
+
+  /* Semantic */
+  --color-success: var(--color-semantic-success-1);
+  --color-success-dark: var(--color-semantic-success-2);
+  --color-error: var(--color-semantic-error-1);
+  --color-error-dark: var(--color-semantic-error-2);
+  --color-warning: var(--color-semantic-warning-yellow-1);
+
+  /* Font (Noto Sans JP via layout.tsx CSS variable) */
+  --font-sans: var(--font-noto-sans-jp), -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-mono: var(--font-family-mono);
+
+  /* Border Radius */
+  --radius-sm: var(--border-radius-4);
+  --radius-md: var(--border-radius-6);
+  --radius-lg: var(--border-radius-8);
+  --radius-xl: var(--border-radius-12);
+
+  /* Shadow */
+  --shadow-card: var(--elevation-1);
+  --shadow-dropdown: var(--elevation-2);
+  --shadow-modal: var(--elevation-3);
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background-color: var(--color-surface);
+  color: var(--color-text-body);
+  font-family: var(--font-sans);
+  line-height: 1.7;
+}
+
+/* Skip link (accessibility) */
+.skip-link {
+  position: absolute;
+  top: -40px;
+  left: 0;
+  background: var(--color-primary);
+  color: var(--color-text-on-primary);
+  padding: 8px 16px;
+  z-index: 100;
+  text-decoration: none;
+  font-weight: 700;
+}
+
+.skip-link:focus {
+  top: 0;
+}
+
+/* Focus ring (DADS standard) */
+:focus-visible {
+  outline: 3px solid #0877d7;
+  outline-offset: 2px;
 }
